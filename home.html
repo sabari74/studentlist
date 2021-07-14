@@ -1,0 +1,182 @@
+<html>
+    <head>
+        <title>Home Page</title>
+    <link rel='stylesheet' type='text/css' media='screen' href='home.css'>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+              <div class="col-xl-12 sm-12">
+                <h1 style="text-align: center;">Hey ! Welcome </h1>
+                
+                <h5 style="text-align: center ; color: #36c758" id="date">Last Logged in : </h5>
+                    <h4 style="color: tomato; text-align: center" id="email"> </h4>
+                    <h4 style="color: tomato; text-align: center" id="name1"> </h4>
+
+              </div>  
+              <div>
+                <input type="submit" style="position: relative; margin-left: 520px; " id="but1"value="Add details" class="button" onclick="addform()"/>
+            </div> 
+            <div class="colform" id="form" style="display: none;" >
+              <div class="col-xl-12 sm-12 mb-4 mt-2" style=" position: relative; margin-top: 30px;">
+                <input type="text" onkeyup="inputHandle()" placeholder="  Enter your name" value="" class="input" id="name"/>
+                <label style="color: red; display: none;" id="nameerror"><p class="name">*This field is required </p></label>
+                <label style="color: red; display: none;"id="namecounterror" >Name should be min 3 characters </label>
+            </div>
+            <div class="col-xl-12 sm-12 mb-4">
+                <input type="text" onkeyup="inputHandle()" placeholder= " age" class="input" value="" id="num" />
+                <label style="color: red; display: none;" id="numerror"><p class="name">*This field is required </p></label>
+                <label style="color: red; display: none;"id="numcounterror" >Number is invalid </label>
+            </div>
+            <div class="col-xl-12 sm-12 mb-4">
+                <input type="text" onkeyup="inputHandle()" placeholder= " college" class="input" value="" id="college" />
+                <label style="color: red; display: none;" id="collegeerror"><p class="name">*This field is required </p></label>
+
+            </div><br>
+        </div>
+            <div>
+            <input type="submit" style="display:none;" value="save" class="button1" id="but2" onclick="saveform()"/>
+        </div>
+            </div>
+          </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    </body>
+</html>
+<script>
+
+    function addform(){
+              if(but1){
+                  document.getElementById('form').style="display:block";
+                  document.getElementById('but2').style="display:block";
+
+              }
+              else{
+                document.getElementById('form').style="display:none";
+                document.getElementById('but2').style="display:none";
+
+              }
+    }
+    var date = new Date()
+    var email = localStorage.getItem('email');
+
+
+    var mani=[];
+    mani = email.split("@");
+    document.getElementById("email").innerHTML= "Hai"+" "+ mani[0];
+
+    document.getElementById("date").innerHTML+=date;
+    if(email)
+
+    function  saveform(){
+            var name = document.getElementById('name').value;
+            var college = document.getElementById('college').value;
+            var num = parseInt(document.getElementById('num')).value;
+    var num =parseInt( document.getElementById("num").value)
+    var college =document.getElementById("college").value
+    var details = [];
+    if(name && college && num){
+          var object ={
+              name:name,
+              age:num,
+              college:college,
+
+          }
+          details.push(object);
+          console.log(details);
+          localStorage.setItem("studentList",JSON.stringify(details));
+          
+  
+        }
+        else{
+            alert("fil all details");
+        }
+    }
+    
+             if(name){
+                       document.getElementById('name').style="border:3px solid green";
+                       document.getElementById('nameerror').style="display: none";
+                    }
+             else{
+                       document.getElementById('name')
+                       document.getElementById('nameerror').style= "display: none; color:red";
+            }
+
+            if(num){
+                        document.getElementById('num').style="border:3px solid green display:none";
+                        document.getElementById('numerror').style="display: none";
+
+                    }
+             else{
+                        document.getElementById('num').style="border:1px solid red";
+                        document.getElementById('numerror').style= "display: block; color:red";
+            }
+            if(college){
+                       document.getElementById('college')
+                       document.getElementById('collegeerror').style="display: none";
+                    }
+             else{
+                       document.getElementById('college').style="border:1px solid red";
+                       document.getElementById('collegeerror').style= "display: block; color:red";
+            }
+            
+
+          
+        
+        function inputHandle(){
+            var name = document.getElementById('name').value;
+            var num = document.getElementById('num').value;
+            var college = document.getElementById('college').value;
+
+
+
+             if(name){
+                       document.getElementById('name').style="border:2px solid green";
+                       document.getElementById('nameerror').style="display: none";
+                    
+                    if(name.length > 2){
+                       document.getElementById('nameerror').style="display: none; color:red";
+                       document.getElementById('namecounterror').style= "display: none; color:red";
+                       
+                    }
+                    else{
+                       document.getElementById('nameerror').style="display: none; color:red";
+                       document.getElementById('namecounterror').style= "display: block; color:red";
+                    }
+             }
+             else{
+                     document.getElementById('name').style="border:1px solid red";
+                     document.getElementById('nameerror').style= "display: block; color:red";
+            }
+
+            if(num){
+                if(num>0){
+                    document.getElementById('numcounterror').style="display:none;";
+                    document.getElementById('numerror').style="display: none";
+
+                }
+                else{
+                    document.getElementById('numcounterror').style="display:block; color:red";
+                }
+                        document.getElementById('num').style="border:2px solid green";
+                       document.getElementById('numerror').style="display: none";
+            }
+                    
+             else{
+               document.getElementById('num').style="border:1px solid red";
+               document.getElementById('numerror').style= "display: block; color:red";
+            }
+            if(college){
+                if(college>4){
+                    document.getElementById('collegeerror').style="display:none;";
+                }
+                else{
+                    document.getElementById('collegeerror').style="display:none; color:red";
+                }
+            }
+                   
+            }
+</script>

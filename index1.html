@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome</title>
+    <link rel='stylesheet' type='text/css' media='screen' href='index.css'>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+</head>
+
+<body>
+     <div class="containerfull">
+         <!----------Welcome part------------->
+       <div class="row ">
+                <div class="col-xl-3">
+                    <div class="xl3">
+                        <h1 class="welcome">Welcome back!</h1>
+                        <h6 class="welcome">To keep connected with us please</h6>
+                        <h6 class="welcome"> login with your prsonal info </h6>
+                    <input type="button" id ="login" value="Sign-in"class="butt0" onclick="loginvalidate()"/>
+                    <input type="submit" style="display: none;"id ="signup" value="Sign-up" class="butt0" onclick="signupvalidate()"/>
+                 </div>
+                </div>
+        
+                    <!----------Sign up--------->
+                  <div class="col-xl-9" >
+                    <div class="xl9" id="up">
+                        <h1 class="head">Sign Up</h1>
+                        <div>
+                            <input type="text" onkeyup="inputHandle()" placeholder="  Enter your name" value="" class="input" id="name"/>
+                            <label style="color: red; display: none;" id="nameerror"><p class="name">*This field is required </p></label>
+                            <label style="color: red; display: none;"id="namecounterror" >Name should be min 3 characters </label>
+                        </div>
+                      <div>
+                            <input type="email"onkeyup="inputHandle()" placeholder= "  Email" class="input" value="" id="email" />
+                            <label style="color: red; display: none;" id="emailerror"><p class="name">*This field is required </p></label>
+                            <label style="color: red; display: none;"id="emailcounterror" >Email is invalid </label>
+                        </div>
+                        <div>
+                            <input type="password" onkeyup="inputHandle()"  placeholder="  Enter Password" class="input" value="" id="password" onchange="Validatepassword()"/>
+                            <label id="passworderror" style="color: red; display: none"><p class="name">*This field is required </p></label>
+                            <label style="color: red; display: none;"id="passwordcounterror" >Password is invalid </label>
+        
+                        
+                        </div>
+                        <div>
+                            <input type="text" onkeyup="inputHandle()" placeholder= " Number" class="input" value="" id="num" />
+                            <label style="color: red; display: none;" id="numerror"><p class="name">*This field is required </p></label>
+                            <label style="color: red; display: none;"id="numcounterror" >Number is invalid </label>
+                        
+                        </div>
+                        <div>
+                        <textarea placeholder="Enter your address" style="width: 178px;" onkeyup="inputHandle()"  value="" id="message" class="input"></textarea>
+                        <label style="color: red; display: none;" id="messageerror"><p class="name">*This field is required </p></label>
+                        <label style="color: red; display: none;"id="msgcounterror" >Address is invalid </label>
+                       
+                        </div>
+                        <div class="input1">Gender :
+                         <input type="radio" name="gender" value="male"/> Male
+                        <input type="radio" name="gender" value="Female"/> Female
+                        <input type="radio" name="gender" value="Transgender"/> Transgender
+                      
+                        </div>
+                           
+                        <div class = "input1" >   
+                            <input id="image" type="file" name="image" onchange= "document.getElementById('preview').src = window.URL.createObjectURL(this.files[0])"    >
+                            <div>
+                            <img id="preview" class="img"  width="50" height="50" ; />
+                            </div>
+                        </div>
+                        <div>
+                            <input type="submit" value="Sign Up" class="button1" onclick="validateform()"/>
+                        </div>
+                   
+                    </div>                 <!----- Login---->
+                  
+                        <div class="container" id="down" style="display: none;">
+                    <div class=" lgin">
+                            <div>
+                              <h1 class="head">Sign In</h1>
+                           </div>
+                           <div class="social" >
+                            <a href="https://www.facebook.com/" class="social1"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://accounts.google.com/servicelogin" class="social2"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="https://www.linkedin.com/login?fromSignIn=true&trk=guest_homepage-basic_nav-header-signin" class="social3"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                         <div>
+                            <input type="email"onkeyup="inputHandlelogin()" placeholder= "  Email" class="input" value="" id="mail" />
+                            <label style="color: red; display: none;" id="mailerror"><p class="name">*This field is required </p></label>
+                            <label style="color: red; display: none;"id="mailcounterror" >Email is invalid </label>
+                          </div><br>
+                         <div>
+                            <input type="password" onkeyup="inputHandlelogin()"  placeholder="  Enter Password" class="input" value="" id="pass" />
+                            <label id="passerror" style="color: red; display: none"><p class="name">*This field is required </p></label>
+                            
+                           </div><br>
+                       
+                            <div>
+                            <input type="submit" value="Sign In" class="button4" onclick="validateLoginform()"/>
+                            </div><br>
+                        </div>
+                    </div>
+                  </div>
+                
+                </div>
+              </div>
+           
+           
+               
+         </body>
+     </html>
+
+
+
+     <script>
+
+          function  validateform(){
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var num = document.getElementById('num').value;
+            var password = document.getElementById('password').value;
+            var message = document.getElementById('message').value;
+
+
+
+
+             if(name){
+                       document.getElementById('name').style="border:3px solid green";
+                       document.getElementById('nameerror').style="display: none";
+                    }
+             else{
+                       document.getElementById('name').style="border:1px solid red";
+                       document.getElementById('nameerror').style= "display: block; color:red";
+            }
+            if(email){
+                        document.getElementById('email').style="border:3px solid green";
+                        document.getElementById('emailerror').style="display: none";
+
+                    }
+             else{
+                        document.getElementById('email').style="border:1px solid red";
+                        document.getElementById('emailerror').style= "display: block; color:red";
+            }
+            if(num){
+                        document.getElementById('num').style="border:3px solid green display:none";
+                        document.getElementById('numerror').style="display: none";
+
+                    }
+             else{
+                        document.getElementById('num').style="border:1px solid red";
+                        document.getElementById('numerror').style= "display: block; color:red";
+            }
+        
+          if(password){
+                        document.getElementById('password').style="border:3px solid green display:none";
+                        document.getElementById('passworderror').style="display: none";
+
+                    }
+             else{
+                        document.getElementById('password').style="border:1px solid red";
+                        document.getElementById('passworderror').style= "display: block; color:red";
+            }
+            if(message){
+                        document.getElementById('message');
+                        document.getElementById('messageerror').style="display: none";
+
+                    }
+             else{
+                        document.getElementById('message').style="border:1px solid red";
+                        document.getElementById('messageerror').style= "display: block; color:red";
+            }
+            if(name && num && email && password && message){
+                localStorage.setItem('name',name);
+                window.location.href="home.html";
+            }
+          }
+        
+        function inputHandle(){
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var email1=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            var num = document.getElementById('num').value;
+            var phoneNum = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/; 
+            var message = document.getElementById('message').value;
+
+             if(name){
+                       document.getElementById('name').style="border:2px solid green";
+                       document.getElementById('nameerror').style="display: none";
+                    
+                    if(name.length > 2){
+                       document.getElementById('nameerror').style="display: none; color:red";
+                       document.getElementById('namecounterror').style= "display: none; color:red";
+                       
+                    }
+                    else{
+                       document.getElementById('nameerror').style="display: none; color:red";
+                       document.getElementById('namecounterror').style= "display: block; color:red";
+                    }
+             }
+             else{
+                     document.getElementById('name').style="border:1px solid red";
+                     document.getElementById('nameerror').style= "display: block; color:red";
+            }
+            if(email){
+                if(email1.test(email)){
+                    document.getElementById('emailcounterror').style="display:none;";
+                }
+                else{
+                    document.getElementById('emailcounterror').style="display:block; color:red";
+                }
+                        document.getElementById('email').style="border:2px solid green";
+                       document.getElementById('emailerror').style="display: none";
+            }
+                    
+
+             else{
+               document.getElementById('email').style="border:1px solid red";
+               document.getElementById('emailerror').style= "display: block; color:red";
+            }
+            
+          if(password){
+                        document.getElementById('password');
+                        document.getElementById('passworderror').style="display: none";
+
+                    }
+             else{
+                        document.getElementById('password').style="border:1px solid red";
+                        document.getElementById('passworderror').style= "display: block; color:red";
+            }
+            if(num){
+                if(phoneNum.test(num)){
+                    document.getElementById('numcounterror').style="display:none;";
+                }
+                else{
+                    document.getElementById('numcounterror').style="display:block; color:red";
+                }
+                        document.getElementById('num').style="border:2px solid green";
+                       document.getElementById('numerror').style="display: none";
+            }
+                    
+             else{
+               document.getElementById('num').style="border:1px solid red";
+               document.getElementById('numerror').style= "display: block; color:red";
+            }
+            if(message){
+                        document.getElementById('message');
+                        document.getElementById('messageerror').style="display: none";
+
+                    }
+             else{
+                        document.getElementById('message').style="border:1px solid red";
+                        document.getElementById('messageerror').style= "display: block; color:red";
+            }
+        }
+     function validateLoginform(){
+        var mail = document.getElementById('mail').value;
+        var pass = document.getElementById('pass').value;
+        var mail2 =/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+
+        if(mail){
+                if(mail2.test(mail)){
+                    document.getElementById('mailcounterror').style="display:none;";
+                }
+                else{
+                    document.getElementById('mailcounterror').style="display:block; color:red";
+                }
+                        document.getElementById('mail').style="border:2px solid green";
+                       document.getElementById('mailerror').style="display: none";
+            }
+                    
+
+             else{
+               document.getElementById('mail').style="border:1px solid red";
+               document.getElementById('mailerror').style= "display: block; color:red";
+            }
+            
+          if(pass){
+                        document.getElementById('pass').style="border:2px solid green ";
+                        document.getElementById('passerror').style="display: none";
+
+                    }
+             else{
+                        document.getElementById('pass').style="border:1px solid red";
+                        document.getElementById('passerror').style= "display: block; color:red";
+            }
+            if(mail && pass ){
+                localStorage.setItem('email',mail);
+                window.location.href="home.html"
+            }
+            
+
+
+            
+          
+     }
+     function inputHandlelogin(){
+        var mail = document.getElementById('mail').value;
+        var pass = document.getElementById('pass').value;
+        var mail2 =/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+
+        if(mail){
+                if(mail2.test(mail)){
+                    document.getElementById('mailcounterror').style="display:none;";
+                }
+                else{
+                    document.getElementById('mailcounterror').style="display:block; color:red";
+                }
+                        document.getElementById('mail').style="border:2px solid green";
+                       document.getElementById('mailerror').style="display: none";
+            }
+                    
+
+             else{
+               document.getElementById('mail').style="border:1px solid red";
+               document.getElementById('mailerror').style= "display: block; color:red";
+            }
+            
+          if(pass){
+                        document.getElementById('pass').style="border:2px solid green ";
+                        document.getElementById('passerror').style="display: none";
+
+                    }
+             else{
+                        document.getElementById('pass').style="border:1px solid red";
+                        document.getElementById('passerror').style= "display: block; color:red";
+            }
+     
+     }
+    function loginvalidate(){
+        if(login){
+                   document.getElementById('up').style="display:none";
+                   document.getElementById('login').style="display:none";
+                   document.getElementById('signup').style="display:block";
+                   document.getElementById('down').style="display:block";
+        }
+        else{
+                 document.getElementById('up').style="display:block";
+                 document.getElementById('down').style="display:none";
+
+
+        }
+    }
+    function signupvalidate(){
+        if(signup){
+                   document.getElementById('down').style="display:none";
+                   document.getElementById('up').style="display:block";
+                   document.getElementById('login').style="display:block";
+                   document.getElementById('signup').style="display:none";
+        }
+        else{
+                 document.getElementById('down').style="display:block";
+                 document.getElementById('up').style="display:none";
+
+        }
+    }
+    
+       
+     </script>
